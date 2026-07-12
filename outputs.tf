@@ -1,3 +1,7 @@
+output "stack_hci_network_interfaces_id" {
+  description = "Map of id values across all stack_hci_network_interfaces, keyed the same as var.stack_hci_network_interfaces"
+  value       = { for k, v in azurerm_stack_hci_network_interface.stack_hci_network_interfaces : k => v.id }
+}
 output "stack_hci_network_interfaces_custom_location_id" {
   description = "Map of custom_location_id values across all stack_hci_network_interfaces, keyed the same as var.stack_hci_network_interfaces"
   value       = { for k, v in azurerm_stack_hci_network_interface.stack_hci_network_interfaces : k => v.custom_location_id }
