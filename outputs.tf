@@ -12,7 +12,7 @@ output "stack_hci_network_interfaces_dns_servers" {
 }
 output "stack_hci_network_interfaces_ip_configuration" {
   description = "Map of ip_configuration values across all stack_hci_network_interfaces, keyed the same as var.stack_hci_network_interfaces"
-  value       = { for k, v in azurerm_stack_hci_network_interface.stack_hci_network_interfaces : k => v.ip_configuration if v.ip_configuration != null && length(v.ip_configuration) > 0 }
+  value       = { for k, v in azurerm_stack_hci_network_interface.stack_hci_network_interfaces : k => one(v.ip_configuration) if v.ip_configuration != null && length(v.ip_configuration) > 0 }
 }
 output "stack_hci_network_interfaces_location" {
   description = "Map of location values across all stack_hci_network_interfaces, keyed the same as var.stack_hci_network_interfaces"
